@@ -1,5 +1,6 @@
 # i3wm - A tiling window manager
 
+![Screen](http://raw.githubusercontent.com/yashsriv/i3-config/master/Screen.png)
 This is my configuration for `i3wm` a tiling window manager  
 The description of the different files are given below.
 

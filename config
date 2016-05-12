@@ -173,10 +173,10 @@ bindsym $mod+period workspace next
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate
 
 mode "$mode_system" {
-  bindsym l exec --no-startup-id sh ~/.i3/i3lock.sh, mode "default"
+  bindsym l exec --no-startup-id bash ~/.i3/i3lock.sh, mode "default"
   bindsym e exec --no-startup-id i3-msg exit, mode "default"
-  bindsym s exec --no-startup-id sh ~/.i3/i3lock.sh && sleep 0.5 && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.Suspend boolean:true, mode "default"
-  bindsym h exec --no-startup-id sh ~/.i3/i3lock.sh && sleep 0.5 && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.Hibernate boolean:true, mode "default"
+  bindsym s exec --no-startup-id bash ~/.i3/i3lock.sh && sleep 0.5 && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.Suspend boolean:true, mode "default"
+  bindsym h exec --no-startup-id bash ~/.i3/i3lock.sh && sleep 0.5 && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.Hibernate boolean:true, mode "default"
 
   # back to normal
   bindsym Return mode "default"
