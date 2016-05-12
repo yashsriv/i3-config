@@ -1,0 +1,6 @@
+#!/bin/bash
+
+files=(~/XKCD/images/*)
+COMIC=$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}")
+DISPLAY=:0 feh --bg-center $COMIC
+echo $COMIC > ~/.current_comic
