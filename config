@@ -164,7 +164,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -5%
 # mute sound
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 # Screenshot
-bindsym Print exec gnome-screenshot
+bindsym Print exec gnome-screenshot -i
 # switch workspace
 bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
@@ -187,7 +187,6 @@ mode "$mode_system" {
 bindsym $mod+Menu mode "$mode_system"
 
 # Set background
-#exec --no-startup-id xsetroot -solid "#212121"
 exec --no-startup-id sh /home/yash/.i3/background
 
 # Capslock is control
@@ -206,6 +205,7 @@ exec syndaemon -i 1.5 -t -k -d
 
 # Workspace music
 bindsym $mod+m workspace "music"
+bindsym $mod+Shift+m move container to workspace "music"
 
 # Set workspace name
 bindsym $mod+t exec i3-input -F 'rename workspace to %s' -P 'New name: '
@@ -229,10 +229,11 @@ mode "$music" {
 bindsym $mod+Tab mode "$music"
 
 # Conky
-exec_always conky
+exec conky
 
 # Setting up another monitor
 bindsym $mod+u exec --no-startup-id xrandr --output LVDS1 --auto --pos 1920x156 --output VGA1 --auto --pos 0x0 && ~/.i3/background
+bindsym $mod+i exec --no-startup-id xrandr --output LVDS1 --auto --output VGA1 --off && ~/.i3/background
 
 # Move workspaces between output
 bindsym $mod+y move workspace to output left
@@ -240,3 +241,9 @@ bindsym $mod+y move workspace to output left
 # Startup apps
 exec --no-startup-id 'workspace 1; exec iceweasel'
 exec --no-startup-id 'workspace music; exec i3-sensible-terminal'
+
+# Colors
+client.focused          #c6ff00 #c6ff00 #000000 #dddddd
+client.focused_inactive #333333 #333333 #c6ff00 #ffffff
+client.unfocused        #333333 #333333 #888888 #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
