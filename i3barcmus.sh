@@ -1,4 +1,11 @@
 #!/bin/bash
+###############################################################################################################
+#   Filename: i3/i3barcmus                                                                                    #
+# Maintainer: Yash Srivastav <yashsriv01@gmail.com>                                                           #
+#        URL: http://github.com/yashsriv/dotfiles                                                             #
+#                                                                                                             #
+# Adds support for cmus in i3 bar                                                                             #
+###############################################################################################################
 # shell script to prepend i3status with cmus song and artist
 i3status -c ~/.i3/i3status.conf | (read line && echo $line && read line && echo $line && while :
 do

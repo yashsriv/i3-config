@@ -1,4 +1,11 @@
 #!/bin/bash
+###############################################################################################################
+#   Filename: i3/i3nag.sh                                                                                     #
+# Maintainer: Yash Srivastav <yashsriv01@gmail.com>                                                           #
+#        URL: http://github.com/yashsriv/dotfiles                                                             #
+#                                                                                                             #
+# Shows warnings on low battery and hibernates automatically                                                  #
+###############################################################################################################
 
 SLEEP_TIME=5  # Time between checks
 SAFE_PERCENT=30  # Chill hain
