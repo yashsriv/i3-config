@@ -7,10 +7,16 @@
 # Sets Background for i3 session                                                                              #
 ###############################################################################################################
 
+# XKCD
 #files=(~/XKCD/images/*)
 #COMIC=$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}")
 #DISPLAY=:0 feh --bg-center $COMIC
 #echo $COMIC > ~/.current_comic
-files=(/media/yash/Extra/Facets/*)
-IMAGE=$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}")
-DISPLAY=:0 feh --bg-fill $IMAGE
+
+# Facets
+#files=(/media/yash/Extra/Facets/*)
+#IMAGE=$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}")
+#DISPLAY=:0 feh --bg-fill $IMAGE
+
+# Minimalist
+DISPLAY=:0 feh --bg-fill ~/Documents/debian.png
