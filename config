@@ -242,6 +242,7 @@ exec conky
 bindsym $mod+u exec --no-startup-id xrandr --output LVDS1 --auto --pos 1920x448 --output VGA1 --auto --pos 0x0 && ~/.i3/background
 bindsym $mod+Shift+u exec --no-startup-id xrandr --output LVDS1 --auto --pos 1900x66 --output VGA1 --auto --pos 0x0 && ~/.i3/background
 bindsym $mod+i exec --no-startup-id xrandr --output LVDS1 --auto --output VGA1 --off && ~/.i3/background
+bindsym $mod+h exec --no-startup-id xrandr --output LVDS1 --auto --output HDMI1 --auto --pos 1366x0 && ~/.i3/background
 
 # Move workspaces between output
 bindsym $mod+y move workspace to output left
