@@ -15,7 +15,10 @@ convert /tmp/screen_locked.png -blur 4x4 /tmp/screen_locked2.png
 rm /tmp/screen_locked.png
 
 # Lock screen displaying this image.
-ps -e | grep "mplayer"
-if [[ $? -ne 0 ]]; then
-  i3lock -e -d -i /tmp/screen_locked2.png
+test=$(ps -A | grep "mpv")
+if [[ -n $test ]]; then
+  echo 'Nope'
+else
+  #i3lock -d -i /tmp/screen_locked2.png -c '#000000' -o '#191d0f' -w '#572020' -l '#ffffff' -e
+  i3lock -d -i ~/Documents/hexcolors.png  -c '#000000' -o '#191d0f' -w '#572020' -l '#ffffff' -e
 fi
