@@ -6,8 +6,15 @@
 #                                                                                                             #
 # Adds support for cmus in i3 bar                                                                             #
 ###############################################################################################################
+
+if [ -f /etc/arch-release ]; then
+  file="~/.i3/i3statusarch.conf"
+else
+  file="~/.i3/i3status.conf"
+fi
+
 # shell script to prepend i3status with cmus song and artist
-i3status -c ~/.i3/i3status.conf | (read line && echo $line && read line && echo $line && while :
+i3status -c $file | (read line && echo $line && read line && echo $line && while :
 do
   read line
   stat=$(cmus-remote -Q 2> /dev/null | grep status | cut -d ' ' -f2-)
