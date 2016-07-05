@@ -13,10 +13,15 @@
 #DISPLAY=:0 feh --bg-center $COMIC
 #echo $COMIC > ~/.current_comic
 
-# Facets
-#files=(/media/yash/Extra/Facets/*)
-#IMAGE=$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}")
-#DISPLAY=:0 feh --bg-fill $IMAGE
 
 # Minimalist
-DISPLAY=:0 feh --bg-fill ~/Documents/debian.png
+if [ -f /etc/arch-release ]; then
+  DISPLAY=:0 feh --bg-fill ~/Documents/arch.png
+elif [ -f /etc/debian_version ]; then
+  DISPLAY=:0 feh --bg-fill ~/Documents/debian.png
+else
+  # Facets
+  files=(/media/yash/Extra/Facets/*)
+  IMAGE=$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}")
+  DISPLAY=:0 feh --bg-fill $IMAGE
+fi
