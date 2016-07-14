@@ -40,7 +40,7 @@ bindsym $mod+Return exec /home/yash/bin/terminal
 bindsym $mod+Shift+Return exec st
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
