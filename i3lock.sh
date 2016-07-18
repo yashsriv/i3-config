@@ -8,11 +8,11 @@
 ###############################################################################################################
 
 # Take a screenshot
-scrot /tmp/screen_locked.png
+#scrot /tmp/screen_locked.png
 
 # Blur
-convert /tmp/screen_locked.png -blur 4x4 /tmp/screen_locked2.png
-rm /tmp/screen_locked.png
+#convert /tmp/screen_locked.png -blur 4x4 /tmp/screen_locked2.png
+#rm /tmp/screen_locked.png
 
 # Lock screen displaying this image.
 test=$(ps -A | grep "mpv")

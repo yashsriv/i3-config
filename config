@@ -235,7 +235,7 @@ exec --no-startup-id xmodmap -e "remove lock = Caps_Lock" && xmodmap -e "keycode
 exec --no-startup-id ~/.i3/i3nag.sh
 
 # Autolock
-exec xautolock -time 5 -locker '~/.i3/i3lock.sh' -lockaftersleep &
+exec xautolock -time 5 -locker '~/.i3/i3lock.sh' -detectsleep &
 
 # Disable mouse taps while typing
 exec syndaemon -i 1.5 -t -k -d
