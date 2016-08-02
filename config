@@ -36,8 +36,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec st
-bindsym $mod+Return exec /home/yash/bin/terminal
-bindsym $mod+Shift+Return exec st
+bindsym $mod+Shift+Return exec /home/yash/bin/terminal
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+q kill
@@ -212,9 +212,10 @@ bindsym $mod+period workspace next
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate
 
 mode "$mode_system" {
-  bindsym l exec --no-startup-id bash ~/.i3/i3lock.sh, mode "default"
+  bindsym l exec --no-startup-id ~/.i3/i3lock.sh, mode "default"
   bindsym e exec --no-startup-id i3-msg exit, mode "default"
   bindsym s exec --no-startup-id bash ~/.i3/i3lock.sh && sleep 0.5 && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.Suspend boolean:true, mode "default"
+  #bindsym s exec --no-startup-id bash ~/.i3/i3lock.sh && sleep 0.5 && systemctl suspend, mode "default"
   bindsym h exec --no-startup-id bash ~/.i3/i3lock.sh && sleep 0.5 && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.Hibernate boolean:true, mode "default"
 
 # back to normal
@@ -268,6 +269,7 @@ bindsym $mod+Tab mode "$music"
 # Conky
 #exec conky
 exec --no-startup-id compton -b
+exec --no-startup-id /usr/bin/rofication-daemon.py
 exec --no-startup-id xcalib -d :0 /home/yash/.color/icc/Seiko.icc
 
 # Setting up another monitor
@@ -292,6 +294,9 @@ bindsym $mod+i mode "$monitors"
 
 # Move workspaces between output
 bindsym $mod+y move workspace to output left
+
+# notification
+bindsym $mod+n exec --no-startup-id /usr/bin/rofication-gui.py
 
 # Startup apps
 #exec --no-startup-id 'workspace 1; exec iceweasel'
