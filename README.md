@@ -11,10 +11,6 @@ The description of the different files are given below.
 
 ## Files
 
-### background
-
-Sets my background as per the OS - debian one for debian and Arch one for Arch
-
 ### cmus
 
 Output for i3blocks
