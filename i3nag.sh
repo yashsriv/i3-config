@@ -17,7 +17,7 @@ export DISPLAY=:0.0
 
 function launchNagbar
 {
-  i3-nagbar -m 'Battery Low!!'
+  i3-nagbar -m 'Battery Low!!' &
   NAGBAR_PID=$!
 }
 
@@ -48,7 +48,6 @@ while [ true ]; do
       fi
       if [[ $rem_bat -le $CRITICAL_PERCENT ]]; then
         SLEEP_TIME=1
-        ~/.i3/i3lock.sh && sleep 0.5 && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.Hibernate boolean:true
       fi
     fi
   else
