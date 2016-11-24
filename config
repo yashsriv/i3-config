@@ -1,7 +1,7 @@
 ###############################################################################################################
 #   Filename: i3/config                                                                                       #
-# Maintainer: Yash Srivastav <yashsriv01@gmail.com>                                                           #
-#        URL: http://github.com/yashsriv/dotfiles                                                             #
+# Maintainer: Yash Srivastav <yash111998@gmail.com>                                                           #
+#        URL: http://github.com/yashsriv/i3-config                                                            #
 #                                                                                                             #
 # Sets i3 settings for the session                                                                            #
 ###############################################################################################################
@@ -84,6 +84,7 @@ set $workspace2 "2: "
 set $workspace8 "8: "
 set $workspace9 "9: "
 set $workspace10 "10: "
+set $binfolder "~/.i3/bin"
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace number 3
@@ -140,7 +141,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  i3bar_command i3bar -t
+  i3bar_command i3bar
   status_command /usr/bin/i3blocks -c /home/yash/.i3/i3blocks.conf
   position top
   font pango:SauceCodePro Nerd Font
@@ -152,7 +153,7 @@ bar {
   tray_padding 0
   colors {
     statusline    #ffffff
-    background    #1b307fcc
+    background    #000000
     separator     #000000ff
       #                  BORDER      BACKGROUND    TEXT
     focused_workspace   #00000000    #00000000   #c6ff00
@@ -168,11 +169,11 @@ bindsym XF86MonBrightnessUp exec xbacklight + 10
 bindsym XF86MonBrightnessDown exec xbacklight - 10
 # Pulse Audio controls
 #increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id /bin/bash ~/.i3/volumeup.sh
+bindsym XF86AudioRaiseVolume exec --no-startup-id /bin/bash "/home/yash/.i3/bin/volume.sh" up
 #decrease sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id /bin/bash ~/.i3/volumedown.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id /bin/bash "/home/yash/.i3/bin/volume.sh" down
 # mute sound
-bindsym XF86AudioMute exec --no-startup-id /bin/bash ~/.i3/volumemute.sh
+bindsym XF86AudioMute exec --no-startup-id /bin/bash "/home/yash/.i3/bin/volume.sh" mute
 # Next Song
 bindsym XF86AudioNext exec --no-startup-id cmus-remote --next && pkill --signal SIGRTMIN+13 i3blocks
 # Prev Song
@@ -203,11 +204,13 @@ exec_always --no-startup-id nitrogen --restore
 # Capslock is control
 exec --no-startup-id xmodmap ~/.Xmodmap
 # run special warning script
-exec --no-startup-id ~/.i3/i3nag.sh
+exec --no-startup-id ~/.i3/bin/i3nag.sh
+# Wallpaper Script
+exec --no-startup-id ~/.i3/bin/wallpaper.sh
 # Network Applet
 exec --no-startup-id nm-applet
 # Redshift Applet
-exec --no-startup-id systemctl start --user redshift-gtk
+exec --no-startup-id systemctl --user start redshift-gtk
 
 # Workspace music
 bindsym $mod+m workspace "♪"
@@ -250,7 +253,7 @@ client.focused_inactive #333333 #333333 #c6ff00 #ffffff
 client.unfocused        #333333 #333333 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
 
-assign [class="Firefox"] $workspace1
+assign [class=".*(F|f)irefox.*"] $workspace1
 assign [class="chromium"] $workspace9
 assign [class="mpv"] $workspace10
 
@@ -259,7 +262,6 @@ for_window [class="^Floatme$"] floating enable
 for_window [class="^mpv$"] move to $workspace10
 for_window [class="^chromium$"] move to $workspace9
 for_window [class="^Vivaldi$"] move to $workspace9
-for_window [title=".*Wine.*"] fullscreen
 
 gaps outer 5
 gaps inner 10
@@ -267,8 +269,7 @@ gaps inner 10
 smart_gaps on
 smart_borders no_gaps
 
-# Strartup
-exec --no-startup-id i3-msg 'workspace 1: ; exec st'
-#exec --no-startup-id i3-msg 'workspace 9: ; exec chromium'
-#exec --no-startup-id i3-msg 'workspace 8: ; exec thunderbird'
+# Startup
+exec --no-startup-id i3-msg 'workspace 2: ; exec st'
+# Start cmus in the background on a separate screen session
 exec screen -S cmus -d -m cmus && sleep 5 && pkill --signal SIGRTMIN+13 i3blocks
